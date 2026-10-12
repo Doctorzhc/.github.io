@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>奶蛙学堂 · 民间玩梗项目</title>
+<!--
+  ============================================================
+  奶蛙学堂 —— 民间玩梗页面（2 秒自动跳转版）
+  部署说明：
+    1. 本文件即 GitHub Pages 的 index.html
+    2. 行为：加载后 2 秒自动跳转到山东大学（青岛）官网
+    3. 请保留免责声明行，它是本页性质的说明，也是站点能长期保留的前提
+  ============================================================
+-->
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei",
+                 "Hiragino Sans GB", sans-serif;
+    background: #f5f6f8;
+    color: #1f2328;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    line-height: 1.7;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 24px rgba(0,0,0,.06);
+    max-width: 520px;
+    width: 100%;
+    padding: 34px 28px 30px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 26px;
+    letter-spacing: .5px;
+    margin-bottom: 6px;
+  }
+  .sub {
+    font-size: 12.5px;
+    color: #9ca3af;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    margin-bottom: 24px;
+  }
+  .banner {
+    background: #fff8e6;
+    border: 1px solid #f0e0b8;
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-size: 13.5px;
+    color: #7a5b00;
+    text-align: left;
+    margin-bottom: 22px;
+  }
+  .banner strong { color: #8a6400; }
+  .count {
+    font-size: 44px;
+    font-weight: 600;
+    color: #1f4e79;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 4px;
+  }
+  .count small { font-size: 15px; color: #9ca3af; font-weight: 400; }
+  .going {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 18px;
+  }
+  .target {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px;
+    color: #4b5563;
+    background: #f7f8fa;
+    border-radius: 8px;
+    padding: 9px 12px;
+    margin-bottom: 20px;
+    word-break: break-all;
+  }
+  a.enter {
+    display: inline-block;
+    color: #1f4e79;
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 1px solid #c7d6e4;
+    padding-bottom: 2px;
+  }
+  a.enter:hover { border-color: #1f4e79; }
+  footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #eef0f3;
+    font-size: 12px;
+    color: #b0b6bd;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+
+    <h1>奶蛙学堂</h1>
+    <div class="sub">nailong · naiwa fan page</div>
+
+    <div class="banner">
+      ⚠️ 本站为<strong>民间玩梗项目</strong>，与<strong>山东大学无任何隶属或授权关系</strong>，
+      非学校官方入口。
+    </div>
+
+    <div class="count"><span id="sec">2.0</span><small> 秒</small></div>
+    <div class="going">后自动前往山东大学（青岛）官网</div>
+
+    <div class="target">https://www.qdxq.sdu.edu.cn</div>
+
+    <a class="enter" href="https://www.qdxq.sdu.edu.cn" rel="noopener">立即前往 →</a>
+
+    <footer>
+      本站不使用山东大学校徽、校名标识及官方视觉元素。<br>
+      如权利人认为本站内容不妥，可通过域名 whois 联系方式告知，将及时处理。
+    </footer>
+
+  </div>
+
+<!-- 无 JS 环境下的兜底跳转；有 JS 时由下方脚本接管并显示倒计时 -->
+<noscript><meta http-equiv="refresh" content="2;url=https://www.qdxq.sdu.edu.cn"></noscript>
+<script>
+  var TARGET  = "https://www.qdxq.sdu.edu.cn";
+  var START   = 2000;          // 停留时长（毫秒）
+  var started = Date.now();
+  var re = document.getElementById("sec");
+
+  var timer = setInterval(function () {
+    var left = START - (Date.now() - started);
+    if (left <= 0) {
+      clearInterval(timer);
+      re.textContent = "0.0";
+      window.location.replace(TARGET);
+      return;
+    }
+    re.textContent = (left / 1000).toFixed(1);
+  }, 100);
+</script>
+</body>
+</html>
